@@ -4,201 +4,257 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyRenterRoom | Curated Interior Essentials</title>
+    <!-- Simple social media vector icons baseline -->
+    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         :root {
-            --bg-color: #FAF9F6;       /* Warm Off-White */
+            --bg-color: #FAF9F6;       /* Warm Off-White (Base) */
             --primary-accent: #C28E5C;  /* Terracotta / Warm Oak */
             --secondary-accent: #7B8F6C;/* Muted Sage Green */
             --text-main: #2B2F2A;       /* Deep Charcoal */
-            --card-bg: #FFFFFF;         /* White Contrast */
+            --card-bg: #FFFFFF;         /* Crisp White for Product Cards */
         }
-        * { box-sizing: border-box; }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            margin: 0; padding: 20px;
-            display: flex; flex-direction: column; align-items: center;
-            -webkit-font-smoothing: antialiased;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
-        header { 
-            text-align: center; 
-            margin: 60px 0 40px 0; 
-            max-width: 600px; 
+
+        /* Responsive Layout Frame mimicking Techiela desktop Split-view */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-top: 40px;
         }
-        header h1 {
-            font-size: 2.8rem; 
-            margin-bottom: 12px; 
-            letter-spacing: 2px;
-            font-weight: 700; 
-            text-transform: uppercase;
+
+        @media (min-width: 900px) {
+            .container {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+            header {
+                position: sticky;
+                top: 40px;
+                width: 35%;
+                text-align: left !important;
+                padding-right: 40px;
+            }
+            .content-section {
+                width: 65%;
+            }
         }
-        header p { 
-            opacity: 0.7; 
-            font-size: 1.1rem; 
-            font-style: italic; 
-            margin-top: 5px; 
-            font-weight: 300;
+
+        /* Branding Panel Elements */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
         }
         
-        /* Premium Filter Buttons Layout */
+        .brand-logo-placeholder {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            color: #FFFFFF; font-size: 2rem; font-weight: bold;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(194, 142, 92, 0.2);
+        }
+        @media (max-width: 899px) { .brand-logo-placeholder { margin: 0 auto 20px auto; } }
+
+        header h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+        header p {
+            font-size: 1.05rem;
+            opacity: 0.7;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        /* Social Handles Rows */
+        .social-links {
+            display: flex; gap: 12px; margin-bottom: 30px;
+        }
+        @media (max-width: 899px) { .social-links { justify-content: center; } }
+        
+        .social-icon {
+            width: 44px; height: 44px;
+            border: 1px solid rgba(43, 47, 42, 0.15);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+            background-color: #FFFFFF;
+        }
+        .social-icon:hover {
+            border-color: var(--primary-accent);
+            color: var(--primary-accent);
+            transform: translateY(-2px);
+        }
+
+        /* Real-Time Live Search Engine Bar */
+        .search-wrapper {
+            position: relative;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 16px 20px 16px 45px;
+            border-radius: 30px;
+            border: 1px solid rgba(43, 47, 42, 0.1);
+            background-color: #FFFFFF;
+            font-size: 1rem;
+            color: var(--text-main);
+            outline: none;
+            transition: border-color 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+        }
+        .search-bar:focus {
+            border-color: var(--primary-accent);
+        }
+        .search-icon {
+            position: absolute; left: 18px; top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-main); opacity: 0.4;
+            font-size: 0.95rem;
+        }
+
+        /* Dynamic Visual Categories Filters Control Grid */
         .category-menu {
-            display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
-            margin-bottom: 40px; max-width: 800px;
+            display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 35px;
         }
         .filter-btn {
-            background-color: transparent; border: 1.5px solid var(--primary-accent);
-            color: var(--text-main); padding: 10px 24px; border-radius: 30px;
-            font-weight: 600; cursor: pointer; transition: all 0.25s ease;
-            text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;
+            background-color: #FFFFFF; border: 1px solid rgba(43, 47, 42, 0.08);
+            color: var(--text-main); padding: 8px 18px; border-radius: 20px;
+            font-weight: 500; cursor: pointer; transition: all 0.2s ease;
+            font-size: 0.9rem; text-transform: capitalize;
         }
         .filter-btn.active, .filter-btn:hover {
-            background-color: var(--primary-accent); color: var(--bg-color);
-            box-shadow: 0 4px 10px rgba(194, 142, 92, 0.2);
+            background-color: #000000; color: #FFFFFF;
+            border-color: #000000;
         }
 
-        /* High-End Techiela Styled Grid */
-        .grid-container {
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 35px; 
-            width: 100%; 
-            max-width: 1200px;
-            padding: 10px;
+        /* Fine Storefront Feed Display */
+        .feed-heading-meta {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(43, 47, 42, 0.06);
+            padding-bottom: 12px; margin-bottom: 25px;
+            font-size: 0.8rem; letter-spacing: 1px; font-weight: 600;
+            text-transform: uppercase; color: var(--text-main); opacity: 0.4;
         }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+        }
+
         .product-card {
-            background-color: var(--card-bg); 
-            border: 1px solid rgba(43, 47, 42, 0.06);
-            border-radius: 12px; 
-            overflow: hidden; 
-            display: flex; 
-            flex-direction: column;
-            box-shadow: 0 10px 30px rgba(43, 47, 42, 0.04);
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background-color: var(--card-bg);
+            border-radius: 14px; overflow: hidden;
+            box-shadow: 0 4px 20px rgba(43, 47, 42, 0.02);
+            border: 1px solid rgba(43, 47, 42, 0.05);
+            display: flex; flex-direction: column;
+            transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
         }
         .product-card.hidden { display: none !important; }
-        
-        .product-card:hover { 
-            transform: translateY(-8px); 
-            border-color: var(--secondary-accent);
-            box-shadow: 0 20px 40px rgba(123, 143, 108, 0.12);
-        }
-        
-        /* Premium Visual Aspect Ratio Boxes */
-        .image-container {
-            width: 100%;
-            padding-top: 100%; /* Perfect Square Aspect Ratio */
-            position: relative;
-            background-color: #F3F2EE;
-            border-bottom: 1px solid rgba(43, 47, 42, 0.04);
-        }
-        .product-image { 
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%; 
-            object-fit: cover; 
-            transition: transform 0.5s ease;
-        }
-        .product-card:hover .product-image {
-            transform: scale(1.03);
+        .product-card:hover {
+            transform: translateY(-5px);
         }
 
-        .product-info { padding: 26px; display: flex; flex-direction: column; flex-grow: 1; }
-        .product-title { font-size: 1.3rem; margin: 0 0 10px 0; font-weight: 600; letter-spacing: -0.3px; }
-        .product-desc { opacity: 0.75; font-size: 0.95rem; line-height: 1.6; margin: 0 0 26px 0; flex-grow: 1; }
-        
-        .buy-btn {
-            background-color: var(--primary-accent); color: var(--bg-color);
-            text-decoration: none; text-align: center; padding: 14px;
-            border-radius: 6px; font-weight: 600; font-size: 0.95rem;
-            letter-spacing: 0.5px; transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(194, 142, 92, 0.15);
+        /* Small Category Floating Text Pin badge */
+        .card-tag-badge {
+            position: absolute; top: 15px; left: 15px; z-index: 2;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 4px 10px; border-radius: 12px; font-size: 0.75rem;
+            font-weight: 600; border: 1px solid rgba(0,0,0,0.05);
+            text-transform: capitalize;
         }
-        .buy-btn:hover { 
-            background-color: var(--secondary-accent);
-            box-shadow: 0 4px 12px rgba(123, 143, 108, 0.2);
+
+        .image-container {
+            width: 100%; padding-top: 100%; position: relative;
+            background-color: #F4F3EE;
+        }
+        .product-image {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+        .product-title { font-size: 1.1rem; font-weight: 600; line-height: 1.4; margin-bottom: 6px; }
+        
+        /* Retail Store Price line matching Techiela reference image */
+        .price-line {
+            font-size: 1rem; font-weight: 700; margin-bottom: 20px;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .store-indicator { font-weight: 400; opacity: 0.5; font-size: 0.85rem; }
+
+        .buy-btn {
+            background-color: #000000; color: #FFFFFF;
+            text-decoration: none; text-align: center; padding: 13px;
+            border-radius: 25px; font-weight: 600; font-size: 0.9rem;
+            margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: opacity 0.2s ease;
+        }
+        .buy-btn:hover { opacity: 0.85; }
+
+        /* Techiela Legal & Platform Footers */
+        footer {
+            margin-top: 80px; width: 100%; max-width: 1200px;
+            border-top: 1px solid rgba(43, 47, 42, 0.06);
+            padding-top: 30px; padding-bottom: 40px;
+            display: flex; flex-direction: column; gap: 20px;
+            font-size: 0.85rem; opacity: 0.6; line-height: 1.6;
+        }
+        .footer-disclosure { max-width: 700px; }
+        .footer-copyright-row {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-top: 10px; font-weight: 500;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <!-- Title spacing is now beautifully separated -->
-        <h1>My Renter Room</h1>
-        <p>Elevating rental spaces with high-end, damage-free interior finds.</p>
-    </header>
-
-    <div class="category-menu" id="categoryMenu">
-        <button class="filter-btn active" onclick="filterCategory('all')">All</button>
-    </div>
-
-    <main class="grid-container" id="productGrid">
-
-        <!-- PRODUCT ITEM 1 -->
-        <div class="product-card" data-category="furniture">
-            <div class="image-container">
-                <!-- Replace this src link with a real product image address later -->
-                <img class="product-image" src="https://unsplash.com" alt="Oak Chair">
+    <div class="container">
+        
+        <!-- LEFT PANEL: Header profile and links structure -->
+        <header>
+            <div class="brand-logo-placeholder">M</div>
+            <h1>My Renter Room</h1>
+            <p>Elevating rental spaces with high-end, damage-free interior finds. Tech &amp; tools recommended, all in one place.</p>
+            
+            <!-- Real User Custom Social Handles Connections row -->
+            <div class="social-links">
+                <a href="https://www.instagram.com/myrenterroom" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@MyRenterRoom" target="_blank" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://x.com/myrenterroom" target="_blank" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
             </div>
-            <div class="product-info">
-                <h3 class="product-title">Minimalist Oak Lounge Chair</h3>
-                <p class="product-desc">Sustainable premium oak framework featuring tailored neutral linen support cushions.</p>
-                <a href="YOUR_AFFILIATE_LINK_HERE" target="_blank" class="buy-btn">Shop the Look</a>
-            </div>
-        </div>
+        </header>
 
-        <!-- PRODUCT ITEM 2 -->
-        <div class="product-card" data-category="decor">
-            <div class="image-container">
-                <!-- Replace this src link with a real product image address later -->
-                <img class="product-image" src="https://unsplash.com" alt="Vase Set">
-            </div>
-            <div class="product-info">
-                <h3 class="product-title">Earthborn Ceramic Vase Set</h3>
-                <p class="product-desc">Matte-finished organic stoneware textured vases built for striking centerpieces.</p>
-                <a href="YOUR_AFFILIATE_LINK_HERE" target="_blank" class="buy-btn">Shop the Look</a>
-            </div>
-        </div>
-
-    </main>
-
-    <script>
-        function setupCategories() {
-            const cards = document.querySelectorAll('.product-card');
-            const menu = document.getElementById('categoryMenu');
-            let categories = new Set();
-            cards.forEach(card => {
-                const cat = card.getAttribute('data-category');
-                if (cat) categories.add(cat.trim().toLowerCase());
-            });
-            categories.forEach(cat => {
-                const btn = document.createElement('button');
-                btn.className = 'filter-btn';
-                btn.innerText = cat;
-                btn.setAttribute('onclick', `filterCategory('${cat}')`);
-                menu.appendChild(btn);
-            });
-        }
-        function filterCategory(category) {
-            const cards = document.querySelectorAll('.product-card');
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => {
-                if (btn.innerText.toLowerCase() === category.toLowerCase() || (category === 'all' && btn.innerText === 'All')) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
-            cards.forEach(card => {
-                const cardCat = card.getAttribute('data-category').toLowerCase();
-                if (category === 'all' || cardCat === category) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-        }
-        window.onload = setupCategories;
-    </script>
-</body>
-</html>
+        <!-- RIGHT PANEL: Live Search fields, Category blocks, and feed grid layout -->
+        <div class="content-section">
+            
+            <!-- Real-time Active Instant Search bar wrapper field -->
+            <div class="search-wrapper">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
