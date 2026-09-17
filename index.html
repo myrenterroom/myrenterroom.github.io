@@ -6,260 +6,227 @@
     <title>MyRenterRoom | Curated Interior Essentials</title>
     <style>
         :root {
-            --bg-color: #FAF9F6;       /* Warm Off-White (Base) */
+            --bg-color: #FAF9F6;       /* Warm Off-White */
             --primary-accent: #C28E5C;  /* Terracotta / Warm Oak */
             --secondary-accent: #7B8F6C;/* Muted Sage Green */
             --text-main: #2B2F2A;       /* Deep Charcoal */
-            --card-bg: #FFFFFF;         /* Crisp White Contrast */
+            --card-bg: #FFFFFF;         /* White Contrast */
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            padding: 24px;
+            padding: 30px 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            -webkit-font-smoothing: antialiased;
         }
 
-        /* Techiela Premium Layout Container Split Frame */
-        .container {
+        /* Safe, flat main container layout frame */
+        .main-wrapper {
             width: 100%;
-            max-width: 1200px;
+            max-width: 800px;
             display: flex;
             flex-direction: column;
-            gap: 40px;
-            margin-top: 30px;
+            align-items: center;
         }
 
-        @media (min-width: 900px) {
-            .container {
-                flex-direction: row;
-                align-items: flex-start;
-                gap: 60px;
-            }
-            header {
-                position: sticky;
-                top: 40px;
-                width: 35%;
-                text-align: left !important;
-            }
-            .content-section {
-                width: 65%;
-            }
-        }
-
-        @media (max-width: 899px) {
-            header {
-                text-align: center;
-                margin-bottom: 10px;
-            }
-            .content-section {
-                width: 100%;
-            }
-        }
-
-        /* Left Side Profile Branding Panel */
-        .brand-logo-placeholder {
-            width: 72px; height: 72px;
+        /* Profile Branding Section */
+        .logo-box {
+            width: 80px; height: 80px;
             background: linear-gradient(135deg, var(--primary-accent), var(--secondary-accent));
-            border-radius: 18px;
+            border-radius: 22px;
             display: flex; align-items: center; justify-content: center;
-            color: #FFFFFF; font-size: 1.8rem; font-weight: bold;
-            margin-bottom: 24px;
+            color: #FFFFFF; font-size: 2rem; font-weight: bold;
+            margin-bottom: 20px;
             box-shadow: 0 8px 20px rgba(194, 142, 92, 0.15);
         }
-        @media (max-width: 899px) { .brand-logo-placeholder { margin: 0 auto 24px auto; } }
 
-        header h1 {
+        h1 {
             font-size: 2.6rem;
             font-weight: 700;
+            margin-bottom: 12px;
+            text-align: center;
             letter-spacing: -0.5px;
-            line-height: 1.1;
-            margin-bottom: 14px;
         }
-        header p {
+
+        .tagline {
             font-size: 1.05rem;
             opacity: 0.75;
             line-height: 1.6;
-            margin-bottom: 28px;
+            margin-bottom: 25px;
+            text-align: center;
+            max-width: 500px;
         }
 
-        /* High-Definition SVG Social Brand Row Links */
-        .social-links {
-            display: flex; gap: 14px; margin-bottom: 30px;
+        /* Flawless SVG Social Platform Link Rows */
+        .social-row {
+            display: flex; gap: 16px; margin-bottom: 40px; justify-content: center;
         }
-        @media (max-width: 899px) { .social-links { justify-content: center; } }
         
-        .social-icon {
-            width: 44px; height: 44px;
-            border: 1px solid rgba(43, 47, 42, 0.15);
+        .icon-btn {
+            width: 46px; height: 46px;
+            border: 1px solid rgba(43, 47, 42, 0.18);
             border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
-            transition: all 0.25s ease;
+            text-decoration: none;
             background-color: #FFFFFF;
+            transition: all 0.2s ease;
         }
-        .social-icon svg {
-            width: 18px; height: 18px;
+        .icon-btn svg {
+            width: 20px; height: 20px;
             fill: var(--text-main);
-            transition: fill 0.25s ease;
             display: block;
         }
-        .social-icon:hover {
+        .icon-btn:hover {
             border-color: var(--primary-accent);
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(194, 142, 92, 0.1);
         }
-        .social-icon:hover svg {
+        .icon-btn:hover svg {
             fill: var(--primary-accent);
         }
 
-        /* Right Side Content Section Elements */
-        .search-wrapper {
+        /* Live Search Block Engine */
+        .search-container {
             position: relative;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             width: 100%;
         }
-        .search-bar {
+        .search-input-field {
             width: 100%;
-            padding: 16px 20px 16px 48px;
+            padding: 16px 20px 16px 45px;
             border-radius: 30px;
-            border: 1px solid rgba(43, 47, 42, 0.12);
+            border: 1px solid rgba(43, 47, 42, 0.15);
             background-color: #FFFFFF;
             font-size: 1rem;
             color: var(--text-main);
             outline: none;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(43, 47, 42, 0.02);
+            transition: border-color 0.2s ease;
         }
-        .search-bar:focus {
+        .search-input-field:focus {
             border-color: var(--primary-accent);
-            box-shadow: 0 4px 16px rgba(194, 142, 92, 0.08);
         }
-        .search-icon {
-            position: absolute; left: 20px; top: 50%;
+        .search-lens {
+            position: absolute; left: 18px; top: 50%;
             transform: translateY(-50%);
-            font-size: 1rem;
-            opacity: 0.4;
-            pointer-events: none;
+            font-size: 1rem; opacity: 0.4;
         }
 
-        /* Filter Pills Styling */
-        .category-menu {
-            display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 35px;
+        /* Custom Categories Sorting Menu */
+        .filter-menu-bar {
+            display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 35px; width: 100%;
         }
-        .filter-btn {
+        .pill-btn {
             background-color: #FFFFFF; border: 1px solid rgba(43, 47, 42, 0.08);
-            color: var(--text-main); padding: 9px 20px; border-radius: 20px;
+            color: var(--text-main); padding: 8px 18px; border-radius: 20px;
             font-weight: 600; cursor: pointer; transition: all 0.2s ease;
-            font-size: 0.85rem; letter-spacing: 0.3px;
+            font-size: 0.88rem;
         }
-        .filter-btn.active, .filter-btn:hover {
-            background-color: #2B2F2A; color: #FAF9F6;
-            border-color: #2B2F2A;
-        }
-
-        .feed-heading-meta {
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid rgba(43, 47, 42, 0.08);
-            padding-bottom: 12px; margin-bottom: 30px;
-            font-size: 0.78rem; letter-spacing: 1px; font-weight: 700;
-            text-transform: uppercase; opacity: 0.5;
+        .pill-btn.active, .pill-btn:hover {
+            background-color: #2B2F2A; color: #FAF9F6; border-color: #2B2F2A;
         }
 
-        /* Product Catalog Grid Layout */
-        .grid-container {
+        /* Product Catalog Grid Setup */
+        .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 25px;
             width: 100%;
+            margin-bottom: 60px;
         }
 
-        .product-card {
+        .item-card {
             background-color: var(--card-bg);
-            border-radius: 16px; overflow: hidden;
+            border-radius: 14px; overflow: hidden;
             box-shadow: 0 4px 20px rgba(43, 47, 42, 0.02);
-            border: 1px solid rgba(43, 47, 42, 0.05);
+            border: 1px solid rgba(43, 47, 42, 0.06);
             display: flex; flex-direction: column;
-            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s ease;
             position: relative;
+            transition: transform 0.25s ease;
         }
-        .product-card.hidden { display: none !important; }
-        .product-card:hover {
-            transform: translateY(-6px);
-            border-color: var(--primary-accent);
-            box-shadow: 0 12px 30px rgba(43, 47, 42, 0.06);
+        .item-card.hidden { display: none !important; }
+        .item-card:hover { transform: translateY(-4px); }
+
+        .tag-badge {
+            position: absolute; top: 12px; left: 12px; z-index: 2;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 4px 10px; border-radius: 12px; font-size: 0.72rem; font-weight: 700;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        .card-tag-badge {
-            position: absolute; top: 16px; left: 16px; z-index: 2;
-            background-color: rgba(255, 255, 255, 0.96);
-            padding: 5px 12px; border-radius: 20px; font-size: 0.72rem;
-            font-weight: 700; border: 1px solid rgba(43, 47, 42, 0.06);
-            letter-spacing: 0.2px;
+        .img-box {
+            width: 100%; padding-top: 100%; position: relative; background-color: #F4F3EE;
+        }
+        .img-box img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;
         }
 
-        .image-container {
-            width: 100%; padding-top: 100%; position: relative;
-            background-color: #F4F3EE;
-            overflow: hidden;
-        }
-        .product-image {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; transition: transform 0.5s ease;
-        }
-        .product-card:hover .product-image {
-            transform: scale(1.04);
-        }
-
-        .product-info { padding: 22px; display: flex; flex-direction: column; flex-grow: 1; }
-        .product-title { font-size: 1.15rem; font-weight: 600; line-height: 1.4; margin-bottom: 8px; text-align: left; }
+        .info-box { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+        .info-box h3 { font-size: 1.1rem; font-weight: 600; line-height: 1.4; margin-bottom: 6px; }
         
-        .price-line {
-            font-size: 1.05rem; font-weight: 700; margin-bottom: 22px;
-            display: flex; align-items: center; gap: 6px;
-        }
-        .store-indicator { font-weight: 400; opacity: 0.5; font-size: 0.85rem; }
+        .price-tag { font-size: 1rem; font-weight: 700; margin-bottom: 18px; }
+        .store-lbl { font-weight: 400; opacity: 0.5; font-size: 0.85rem; }
 
-        .buy-btn {
+        .action-link {
             background-color: #2B2F2A; color: #FAF9F6;
-            text-decoration: none; text-align: center; padding: 14px;
-            border-radius: 30px; font-weight: 600; font-size: 0.9rem;
-            margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 6px;
-            transition: all 0.2s ease;
+            text-decoration: none; text-align: center; padding: 12px;
+            border-radius: 25px; font-weight: 600; font-size: 0.9rem; margin-top: auto;
         }
-        .buy-btn:hover { background-color: var(--primary-accent); color: var(--bg-color); }
+        .action-link:hover { opacity: 0.9; }
 
-        /* Professional Legal Footer Area */
+        /* Legal Footer Details */
         footer {
-            margin-top: 90px; width: 100%;
-            border-top: 1px solid rgba(43, 47, 42, 0.08);
-            padding-top: 32px; padding-bottom: 50px;
-            display: flex; flex-direction: column; gap: 24px;
-            font-size: 0.85rem; opacity: 0.6; line-height: 1.6;
+            width: 100%; border-top: 1px solid rgba(43, 47, 42, 0.08);
+            padding-top: 25px; padding-bottom: 40px; font-size: 0.82rem; opacity: 0.6; line-height: 1.6;
         }
-        .footer-disclosure { max-width: 760px; font-style: italic; }
-        .footer-copyright-row {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-top: 8px; font-weight: 600; letter-spacing: 0.2px;
-        }
+        .disclaimer { margin-bottom: 15px; }
+        .copyright-line { display: flex; justify-content: space-between; font-weight: 600; }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="main-wrapper">
         
-        <!-- LEFT PANEL: Header Profile Info & Branded Handles -->
-        <header>
-            <div class="brand-logo-placeholder">M</div>
-            <h1>My Renter Room</h1>
-            <p>Elevating rental spaces with high-end, damage-free interior finds. Recommended furniture, decor, and upgrades all in one place.</p>
-            
-            <div class="social-links">
-                <!-- Instagram Profile Link -->
-                <a href="https://instagram.com" target="_blank" class="social-icon" title="Instagram">
+        <!-- BRAND HEADER BLOCK -->
+        <div class="logo-box">M</div>
+        <h1>My Renter Room</h1>
+        <p class="tagline">Elevating rental spaces with high-end, damage-free interior finds. Tech &amp; tools recommended, all in one place.</p>
+        
+        <!-- THE 3 VERIFIED SOCIAL CHANNELS LINKS -->
+        <div class="social-row">
+            <!-- Instagram -->
+            <a href="https://instagram.com" target="_blank" class="icon-btn" title="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <!-- YouTube -->
+            <a href="https://youtube.com" target="_blank" class="icon-btn" title="YouTube">
+                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <!-- X Twitter -->
+            <a href="https://x.com" target="_blank" class="icon-btn" title="X (Twitter)">
+                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+        </div>
+
+        <!-- REAL-TIME LIVE SEARCH FIELD ENGINE -->
+        <div class="search-container">
+            <span class="search-lens">🔍</span>
+            <input type="text" id="searchInput" class="search-bar" placeholder="Search product names..." onkeyup="runLiveSearch()">
+        </div>
+
+        <!-- CORE ACTIVE CATEGORY BUTTONS PILLS MENU -->
+        <div class="filter-menu-bar" id="categoryMenu">
+            <button class="pill-btn active" id="btn-all" onclick="filterCategory('all')">All</button>
+        </div>
+
+        <!-- PRODUCT INVENTORY CATALOG FEED -->
+        <div class="products-grid" id="productsGrid">
+
+            <!-- ITEM 1 -->
+            <div class="item-card" data-category="Kitchen utility">
+                <span class="tag-badge">Kitchen utility</span>
+                <div class="img-box">
