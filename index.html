@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyRenterRoom | Curated Interior Essentials</title>
-    <!-- Simple social media vector icons baseline -->
-    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         :root {
             --bg-color: #FAF9F6;       /* Warm Off-White (Base) */
@@ -28,7 +26,7 @@
             min-height: 100vh;
         }
 
-        /* Responsive Layout Frame mimicking Techiela desktop Split-view */
+        /* Responsive Layout Frame matching Techiela desktop Split-view */
         .container {
             width: 100%;
             max-width: 1200px;
@@ -59,6 +57,7 @@
         header {
             text-align: center;
             margin-bottom: 20px;
+            width: 100%;
         }
         
         .brand-logo-placeholder {
@@ -86,7 +85,7 @@
             margin-bottom: 25px;
         }
 
-        /* Social Handles Rows */
+        /* Social Handles Rows with direct SVGs */
         .social-links {
             display: flex; gap: 12px; margin-bottom: 30px;
         }
@@ -99,14 +98,20 @@
             display: flex; align-items: center; justify-content: center;
             color: var(--text-main);
             text-decoration: none;
-            font-size: 1.1rem;
             transition: all 0.2s ease;
             background-color: #FFFFFF;
         }
+        .social-icon svg {
+            width: 20px; height: 20px;
+            fill: var(--text-main);
+            transition: fill 0.2s ease;
+        }
         .social-icon:hover {
             border-color: var(--primary-accent);
-            color: var(--primary-accent);
             transform: translateY(-2px);
+        }
+        .social-icon:hover svg {
+            fill: var(--primary-accent);
         }
 
         /* Real-Time Live Search Engine Bar */
@@ -134,7 +139,6 @@
             position: absolute; left: 18px; top: 50%;
             transform: translateY(-50%);
             color: var(--text-main); opacity: 0.4;
-            font-size: 0.95rem;
         }
 
         /* Dynamic Visual Categories Filters Control Grid */
@@ -145,7 +149,7 @@
             background-color: #FFFFFF; border: 1px solid rgba(43, 47, 42, 0.08);
             color: var(--text-main); padding: 8px 18px; border-radius: 20px;
             font-weight: 500; cursor: pointer; transition: all 0.2s ease;
-            font-size: 0.9rem; text-transform: capitalize;
+            font-size: 0.9rem;
         }
         .filter-btn.active, .filter-btn:hover {
             background-color: #000000; color: #FFFFFF;
@@ -182,13 +186,11 @@
             transform: translateY(-5px);
         }
 
-        /* Small Category Floating Text Pin badge */
         .card-tag-badge {
             position: absolute; top: 15px; left: 15px; z-index: 2;
             background-color: rgba(255, 255, 255, 0.95);
             padding: 4px 10px; border-radius: 12px; font-size: 0.75rem;
             font-weight: 600; border: 1px solid rgba(0,0,0,0.05);
-            text-transform: capitalize;
         }
 
         .image-container {
@@ -201,9 +203,8 @@
         }
 
         .product-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-        .product-title { font-size: 1.1rem; font-weight: 600; line-height: 1.4; margin-bottom: 6px; }
+        .product-title { font-size: 1.1rem; font-weight: 600; line-height: 1.4; margin-bottom: 6px; text-align: left; }
         
-        /* Retail Store Price line matching Techiela reference image */
         .price-line {
             font-size: 1rem; font-weight: 700; margin-bottom: 20px;
             display: flex; align-items: center; gap: 6px;
@@ -219,15 +220,13 @@
         }
         .buy-btn:hover { opacity: 0.85; }
 
-        /* Techiela Legal & Platform Footers */
         footer {
-            margin-top: 80px; width: 100%; max-width: 1200px;
+            margin-top: 80px; width: 100%;
             border-top: 1px solid rgba(43, 47, 42, 0.06);
             padding-top: 30px; padding-bottom: 40px;
             display: flex; flex-direction: column; gap: 20px;
             font-size: 0.85rem; opacity: 0.6; line-height: 1.6;
         }
-        .footer-disclosure { max-width: 700px; }
         .footer-copyright-row {
             display: flex; justify-content: space-between; align-items: center;
             margin-top: 10px; font-weight: 500;
@@ -238,23 +237,16 @@
 
     <div class="container">
         
-        <!-- LEFT PANEL: Header profile and links structure -->
+        <!-- LEFT PANEL: Header profile layout -->
         <header>
             <div class="brand-logo-placeholder">M</div>
             <h1>My Renter Room</h1>
             <p>Elevating rental spaces with high-end, damage-free interior finds. Tech &amp; tools recommended, all in one place.</p>
             
-            <!-- Real User Custom Social Handles Connections row -->
             <div class="social-links">
-                <a href="https://www.instagram.com/myrenterroom" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@MyRenterRoom" target="_blank" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
-                <a href="https://x.com/myrenterroom" target="_blank" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
-            </div>
-        </header>
-
-        <!-- RIGHT PANEL: Live Search fields, Category blocks, and feed grid layout -->
-        <div class="content-section">
-            
-            <!-- Real-time Active Instant Search bar wrapper field -->
-            <div class="search-wrapper">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <!-- Instagram Icon -->
+                <a href="https://instagram.com" target="_blank" class="social-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <!-- YouTube Icon -->
+                <a href="https://youtube.com" target="_blank" class="social-icon">
