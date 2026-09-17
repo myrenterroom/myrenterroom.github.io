@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Renter Room | Kitchen Utility & Aesthetic Upgrades</title>
-    <!-- Google Fonts for a clean, modern aesthetic -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Social and UI Icons -->
+    <!-- FontAwesome for UI Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- STRICT BRAND COLOR VARIABLES --- */
+        /* --- BRAND COLOR VARIABLES --- */
         :root {
-            --bg-base: #FAF9F6;       /* Warm Off-White */
-            --accent-primary: #C28E5C; /* Terracotta / Warm Oak */
-            --accent-secondary: #7B8F6C; /* Muted Sage Green */
-            --text-dark: #2B2F2A;      /* Deep Charcoal */
+            --bg-base: #FAF9F6;       
+            --accent-primary: #C28E5C; 
+            --accent-secondary: #7B8F6C; 
+            --text-dark: #2B2F2A;      
         }
 
-        /* --- GLOBAL STYLES --- */
         * {
             margin: 0;
             padding: 0;
@@ -37,7 +36,6 @@
             color: inherit;
         }
 
-        /* --- LAYOUT STRUCTURE --- */
         .app-container {
             display: flex;
             min-height: 100vh;
@@ -53,7 +51,6 @@
             align-items: center;
             justify-content: center;
             padding: 2rem;
-            /* Soft background glow mimicking the screenshot */
             background: radial-gradient(circle at center, rgba(194, 142, 92, 0.08) 0%, rgba(250, 249, 246, 0) 60%);
         }
 
@@ -105,6 +102,7 @@
             justify-content: center;
             font-size: 1.2rem;
             transition: all 0.3s ease;
+            color: var(--text-dark);
         }
 
         .social-btn:hover {
@@ -141,7 +139,6 @@
             padding: 4rem 5%;
         }
 
-        /* Search Bar */
         .search-container {
             position: relative;
             margin-bottom: 2rem;
@@ -171,16 +168,15 @@
             opacity: 0.4;
         }
 
-        /* Category Pills */
         .categories {
             display: flex;
             gap: 0.8rem;
             overflow-x: auto;
             padding-bottom: 1rem;
             margin-bottom: 3rem;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
         }
-        .categories::-webkit-scrollbar { display: none; } /* Chrome */
+        .categories::-webkit-scrollbar { display: none; }
 
         .category-pill {
             padding: 0.6rem 1.2rem;
@@ -205,7 +201,6 @@
             border-color: var(--accent-secondary);
         }
 
-        /* Section Headers */
         .section-header {
             display: flex;
             justify-content: space-between;
@@ -220,7 +215,7 @@
             padding-bottom: 1rem;
         }
 
-        /* Product Grid */
+        /* Product Grid (Desktop defaults to dynamic sizing) */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -252,9 +247,6 @@
             position: relative;
             background-color: #fff;
             margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .product-badge {
@@ -332,7 +324,6 @@
             background-color: var(--accent-primary);
         }
 
-        /* Footer / Follow Along */
         .footer-section {
             margin-top: 4rem;
             padding-top: 2rem;
@@ -366,7 +357,7 @@
             justify-content: space-between;
         }
 
-        /* --- RESPONSIVE DESIGN FOR MOBILE --- */
+        /* --- MOBILE RESPONSIVE (DOUBLE BLOCK) --- */
         @media (max-width: 900px) {
             .app-container {
                 flex-direction: column;
@@ -375,19 +366,51 @@
                 width: 100%;
                 position: relative;
                 height: auto;
-                padding: 4rem 2rem 2rem;
+                padding: 3rem 1.5rem 1.5rem;
                 background: none;
             }
             .main-content {
                 width: 100%;
                 margin-left: 0;
-                padding: 2rem;
+                padding: 1.5rem;
             }
             .sidebar-nav {
-                display: none; /* Hide nav links on mobile to save space, matching screenshot behavior */
+                display: none; 
             }
-            .social-icons {
-                margin-bottom: 0;
+            
+            /* Forces exactly 2 columns side-by-side on mobile */
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem; 
+            }
+            
+            /* Shrink elements inside the card so they fit the double blocks neatly */
+            .product-card {
+                padding: 0.75rem;
+                border-radius: 12px;
+            }
+            .product-image-container {
+                height: 140px;
+                border-radius: 8px;
+                margin-bottom: 1rem;
+            }
+            .product-badge {
+                font-size: 0.6rem;
+                padding: 0.2rem 0.5rem;
+                border-radius: 8px;
+            }
+            .product-title {
+                font-size: 0.85rem;
+                margin-bottom: 0.5rem;
+            }
+            .product-meta {
+                font-size: 0.85rem;
+                margin-bottom: 1rem;
+            }
+            .buy-button {
+                padding: 0.7rem;
+                font-size: 0.85rem;
+                border-radius: 20px;
             }
         }
     </style>
@@ -396,7 +419,6 @@
 
 <div class="app-container">
 
-    <!-- LEFT SIDEBAR -->
     <aside class="sidebar">
         <div class="brand-logo-box">MR</div>
         <h1 class="brand-title">My Renter Room</h1>
@@ -405,7 +427,12 @@
         <div class="social-icons">
             <a href="https://www.instagram.com/MyRenterRoom" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
             <a href="https://m.youtube.com/@MyRenterRoom" target="_blank" class="social-btn"><i class="fab fa-youtube"></i></a>
-            <a href="https://x.com/MyRenterRoom" target="_blank" class="social-btn"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://x.com/MyRenterRoom" target="_blank" class="social-btn">
+                <!-- Hardcoded SVG guarantees the X logo shows even if FontAwesome fails -->
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+                </svg>
+            </a>
         </div>
 
         <nav class="sidebar-nav">
@@ -414,56 +441,46 @@
         </nav>
     </aside>
 
-    <!-- RIGHT CONTENT -->
     <main class="main-content">
         
-        <!-- Search & Categories -->
         <div class="search-container">
             <i class="fas fa-search search-icon"></i>
-            <input type="text" class="search-input" placeholder="Search products...">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
         </div>
 
-        <div class="categories">
-            <button class="category-pill active">All</button>
-            <button class="category-pill">Kitchen Utility</button>
-            <button class="category-pill">Rental Friendly</button>
-            <button class="category-pill">Aesthetic Upgrade</button>
+        <!-- Categories used for filtering -->
+        <div class="categories" id="categoryFilters">
+            <button class="category-pill active" data-filter="all">All</button>
+            <button class="category-pill" data-filter="kitchen utility">Kitchen Utility</button>
+            <button class="category-pill" data-filter="rental friendly">Rental Friendly</button>
+            <button class="category-pill" data-filter="aesthetic upgrade">Aesthetic Upgrade</button>
         </div>
 
-        <!-- Product Section -->
         <div id="latest-picks" class="section-header">
             <span>01 / My Latest Picks</span>
         </div>
 
-        <div class="product-grid">
+        <div class="product-grid" id="productGrid">
 
-            <!-- ========================================== -->
-            <!-- PRODUCT CARD 1 START (Copy this to add more) -->
-            <!-- ========================================== -->
-            <article class="product-card">
+            <!-- PRODUCT 1 -->
+            <!-- Ensure data-category matches the filter exactly -->
+            <article class="product-card" data-category="kitchen utility">
                 <div class="product-image-container">
                     <span class="product-badge">Kitchen Utility</span>
-                    <!-- Change Image URL Below -->
                     <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Over Sink Drying Rack" class="product-image">
                 </div>
-                <!-- Change Product Title Below -->
                 <h2 class="product-title">Space-Saving Over Sink Roll-Up Dish Drying Rack</h2>
                 <div class="product-meta">
-                    <!-- Change Price Below -->
                     <span class="product-price">₹1,299</span>
                     <i class="fas fa-circle merchant-dot"></i>
-                    <!-- Change Merchant Name Below -->
                     <span class="merchant-name">Amazon</span>
                 </div>
-                <!-- Change Affiliate Link Below inside href="" -->
-                <a href="#" target="_blank" class="buy-button">Buy On <i class="fas fa-arrow-up-right-from-square" style="font-size: 0.8em;"></i></a>
+                <!-- Paste your actual Amazon affiliate link inside href="" -->
+                <a href="https://www.amazon.in/your-affiliate-link-here" target="_blank" class="buy-button">Buy On <i class="fas fa-arrow-up-right-from-square" style="font-size: 0.8em;"></i></a>
             </article>
-            <!-- PRODUCT CARD 1 END -->
 
-            <!-- ========================================== -->
-            <!-- PRODUCT CARD 2 START -->
-            <!-- ========================================== -->
-            <article class="product-card">
+            <!-- PRODUCT 2 -->
+            <article class="product-card" data-category="rental friendly">
                 <div class="product-image-container">
                     <span class="product-badge">Rental Friendly</span>
                     <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Peel and Stick Backsplash" class="product-image">
@@ -474,14 +491,11 @@
                     <i class="fas fa-circle merchant-dot"></i>
                     <span class="merchant-name">Amazon</span>
                 </div>
-                <a href="#" target="_blank" class="buy-button">Buy On <i class="fas fa-arrow-up-right-from-square" style="font-size: 0.8em;"></i></a>
+                <a href="https://www.amazon.in/your-affiliate-link-here" target="_blank" class="buy-button">Buy On <i class="fas fa-arrow-up-right-from-square" style="font-size: 0.8em;"></i></a>
             </article>
-            <!-- PRODUCT CARD 2 END -->
 
-            <!-- ========================================== -->
-            <!-- PRODUCT CARD 3 START -->
-            <!-- ========================================== -->
-            <article class="product-card">
+            <!-- PRODUCT 3 -->
+            <article class="product-card" data-category="aesthetic upgrade">
                 <div class="product-image-container">
                     <span class="product-badge">Aesthetic Upgrade</span>
                     <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Ceramic Storage Jars" class="product-image">
@@ -492,13 +506,11 @@
                     <i class="fas fa-circle merchant-dot"></i>
                     <span class="merchant-name">Flipkart</span>
                 </div>
-                <a href="#" target="_blank" class="buy-button">Buy On <i class="fas fa-arrow-up-right-from-square" style="font-size: 0.8em;"></i></a>
+                <a href="https://www.flipkart.com/your-affiliate-link-here" target="_blank" class="buy-button">Buy On <i class="fas fa-arrow-up-right-from-square" style="font-size: 0.8em;"></i></a>
             </article>
-            <!-- PRODUCT CARD 3 END -->
 
         </div>
 
-        <!-- Footer / Disclaimer -->
         <div id="follow-along" class="section-header">
             <span>02 / Follow Along</span>
         </div>
@@ -518,6 +530,52 @@
     </main>
 
 </div>
+
+<!-- JAVASCRIPT FOR SEARCH AND FILTERING -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('searchInput');
+        const categoryPills = document.querySelectorAll('.category-pill');
+        const products = document.querySelectorAll('.product-card');
+
+        // Function to handle filtering logic
+        function filterProducts() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const activePill = document.querySelector('.category-pill.active');
+            const activeCategory = activePill.getAttribute('data-filter');
+
+            products.forEach(product => {
+                const title = product.querySelector('.product-title').textContent.toLowerCase();
+                const category = product.getAttribute('data-category').toLowerCase();
+                
+                const matchesSearch = title.includes(searchTerm);
+                const matchesCategory = (activeCategory === 'all' || category === activeCategory);
+
+                // Show product only if it matches both search text AND selected category
+                if (matchesSearch && matchesCategory) {
+                    product.style.display = 'flex';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        // Listen for Search typing
+        searchInput.addEventListener('input', filterProducts);
+
+        // Listen for Category clicks
+        categoryPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                // Remove active class from all pills, add to the clicked one
+                categoryPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                
+                // Run the filter check again
+                filterProducts();
+            });
+        });
+    });
+</script>
 
 </body>
 </html>
