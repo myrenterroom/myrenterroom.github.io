@@ -138,6 +138,30 @@
             width: 65%;
             padding: 4rem 5%;
         }
+        /* Search Instruction Banner */
+        .search-instruction-banner {
+            background-color: rgba(194, 142, 92, 0.08); /* Soft Terracotta tint */
+            border: 1px solid rgba(194, 142, 92, 0.3);
+            color: var(--text-dark);
+            padding: 0.8rem 1.2rem;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .search-instruction-banner i {
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+        }
+
+        .search-instruction-banner strong {
+            color: var(--accent-primary);
+            font-weight: 800;
+        }
 
         .search-container {
             position: relative;
@@ -443,6 +467,17 @@
     </aside>
 
     <main class="main-content">
+
+         <!-- NEW SEARCH INSTRUCTION BANNER -->
+        <div class="search-instruction-banner">
+            <i class="fas fa-search-location"></i> 
+            <span><strong>Pro Tip:</strong> Type the <strong>Reel Number</strong> (e.g., "1") in the search bar below to find the exact product instantly!</span>
+        </div>
+        
+        <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
+        </div>
         
         <div class="search-container">
             <i class="fas fa-search search-icon"></i>
