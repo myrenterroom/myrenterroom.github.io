@@ -138,6 +138,15 @@
             width: 65%;
             padding: 4rem 5%;
         }
+        .sticky-header {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-base);
+            z-index: 99;
+            padding-top: 1rem;
+            margin-top: -1rem;
+        }
         /* Search Instruction Banner */
         .search-instruction-banner {
             background-color: rgba(194, 142, 92, 0.08); /* Soft Terracotta tint */
@@ -476,7 +485,7 @@
     <aside class="sidebar">
         <div class="brand-logo-box">MR</div>
         <h1 class="brand-title">My Renter Room</h1>
-        <p class="brand-tagline">Your personal guide to an elevated space. I handpick and test the internet's best rental-friendly upgrades so you can shop with zero guesswork.</p>
+        <p class="brand-tagline">My aesthetic rental upgrades I recommend, all in one place.</p>
         
         <div class="social-icons">
             <a href="https://www.instagram.com/MyRenterRoom" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
@@ -504,18 +513,24 @@
             <span><strong>Pro Tip:</strong> Type the <strong>Reels Number</strong> (e.g., "1 Or 2") in the search bar below to find the exact product instantly!</span>
         </div>
         
-        <div class="search-container">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
-        </div>
+        <!-- === STICKY HEADER STARTS HERE === -->
+        <div class="sticky-header">
+            
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
+            </div>
 
-        <!-- Categories used for filtering -->
-        <div class="categories" id="categoryFilters">
-            <button class="category-pill active" data-filter="all">All</button>
-            <button class="category-pill" data-filter="kitchen utility">Kitchen Utility</button>
-            <button class="category-pill" data-filter="rental friendly">Rental Friendly</button>
-            <button class="category-pill" data-filter="aesthetic upgrade">Aesthetic Upgrade</button>
+            <!-- Categories used for filtering -->
+            <div class="categories" id="categoryFilters">
+                <button class="category-pill active" data-filter="all">All</button>
+                <button class="category-pill" data-filter="kitchen utility">Kitchen Utility</button>
+                <button class="category-pill" data-filter="rental friendly">Rental Friendly</button>
+                <button class="category-pill" data-filter="aesthetic upgrade">Aesthetic Upgrade</button>
+            </div>
+
         </div>
+        <!-- === STICKY HEADER ENDS HERE === -->
 
         <div id="latest-picks" class="section-header">
             <span>01 / My Latest Picks</span>
