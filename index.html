@@ -390,50 +390,80 @@
                 width: 100%;
                 position: relative;
                 height: auto;
-                padding: 3rem 1.5rem 1.5rem;
+                padding: 1.5rem 1rem 0.5rem; /* Reduced top padding */
                 background: none;
             }
-            .main-content {
-                width: 100%;
-                margin-left: 0;
-                padding: 1.5rem;
+            
+            /* Compress sidebar elements specifically for mobile */
+            .brand-logo-box {
+                margin-bottom: 1rem;
+                width: 80px; 
+                height: 80px;
+            }
+            .brand-title {
+                font-size: 2rem; 
+                margin-bottom: 0.5rem;
+            }
+            .brand-tagline {
+                margin-bottom: 1.5rem;
+            }
+            .social-icons {
+                margin-bottom: 1rem; /* Removed the massive 4rem gap */
             }
             .sidebar-nav {
                 display: none; 
             }
-            
-            /* Forces exactly 2 columns side-by-side on mobile */
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem; 
+
+            .main-content {
+                width: 100%;
+                margin-left: 0;
+                padding: 0.5rem 1rem 1.5rem; /* Removed top padding */
             }
             
-            /* Shrink elements inside the card so they fit the double blocks neatly */
+            /* Compress search and categories gaps */
+            .search-instruction-banner {
+                margin-bottom: 1rem;
+                font-size: 0.75rem; /* Slightly smaller text to save space */
+                padding: 0.6rem 1rem;
+            }
+            .search-container {
+                margin-bottom: 1rem;
+            }
+            .categories {
+                margin-bottom: 1.5rem; /* Reduced from 3rem */
+            }
+            
+            /* Ensure the 2-column grid stays perfectly proportioned */
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem; 
+            }
+            
             .product-card {
-                padding: 0.75rem;
+                padding: 0.6rem;
                 border-radius: 12px;
             }
             .product-image-container {
-                height: 140px;
+                height: 130px;
                 border-radius: 8px;
-                margin-bottom: 1rem;
+                margin-bottom: 0.8rem;
             }
             .product-badge {
-                font-size: 0.6rem;
-                padding: 0.2rem 0.5rem;
-                border-radius: 8px;
+                font-size: 0.55rem;
+                padding: 0.2rem 0.4rem;
+                border-radius: 6px;
             }
             .product-title {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
                 margin-bottom: 0.5rem;
             }
             .product-meta {
-                font-size: 0.85rem;
-                margin-bottom: 1rem;
+                font-size: 0.8rem;
+                margin-bottom: 0.8rem;
             }
             .buy-button {
-                padding: 0.7rem;
-                font-size: 0.85rem;
+                padding: 0.6rem;
+                font-size: 0.8rem;
                 border-radius: 20px;
             }
         }
